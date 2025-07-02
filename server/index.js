@@ -37,9 +37,9 @@ const connectDB = async () => {
 app.use('/api/blogs', blogRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/auth', authRoutes);
-app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, '../client/404.html')); // If you have one
-});
+// app.use((req, res) => {
+//   res.status(404).sendFile(path.join(__dirname, '../client/404.html')); // If you have one
+// });
 
 
 // Serve static files
