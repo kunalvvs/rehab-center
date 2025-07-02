@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Hope Rehabilitation Center</title>
+    <meta name="description" content="Read our latest articles on mental health, physical therapy, addiction recovery, and wellness tips from healthcare professionals.">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Hope Rehabilitation Center</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/blog" class="nav-link active">Blog</a></li>
+                <li><a href="/quiz" class="nav-link">Assessment Quiz</a></li>
+                <li><a href="/admin" class="nav-link admin-link">Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Health & Wellness Blog</h1>
+            <p>Expert insights and practical tips for your recovery journey</p>
+        </div>
+    </section>
+
+    <!-- Blog Filters -->
+    <section class="blog-filters">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="Mental Health">Mental Health</option>
+                        <option value="Physical Therapy">Physical Therapy</option>
+                        <option value="Addiction Recovery">Addiction Recovery</option>
+                        <option value="Wellness">Wellness</option>
+                        <option value="General">General</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="search-input" placeholder="Search articles...">
+                    <button id="search-btn" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-grid" id="blog-posts">
+                <!-- Blog posts will be loaded here -->
+            </div>
+            
+            <!-- Loading indicator -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Loading articles...</p>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hope Rehabilitation Center</h3>
+                    <p>Dedicated to providing compassionate, professional rehabilitation services to help you achieve lasting recovery and wellness.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Mental Health</a></li>
+                        <li><a href="#">Physical Therapy</a></li>
+                        <li><a href="#">Addiction Recovery</a></li>
+                        <li><a href="#">Wellness Programs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/quiz">Assessment Quiz</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📞 (555) 123-4567</p>
+                    <p>📧 info@hoperehab.com</p>
+                    <p>📍 123 Recovery Street<br>Wellness City, WC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hope Rehabilitation Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Quiz - Hope Rehabilitation Center</title>
+    <meta name="description" content="Take our comprehensive assessment quiz to get personalized recommendations for your rehabilitation and wellness journey.">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Hope Rehabilitation Center</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/blog" class="nav-link">Blog</a></li>
+                <li><a href="/quiz" class="nav-link active">Assessment Quiz</a></li>
+                <li><a href="/admin" class="nav-link admin-link">Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quiz Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Assessment Quiz</h1>
+            <p>Take our quiz to get personalized recommendations for your wellness journey</p>
+        </div>
+    </section>
+
+    <!-- Quiz Selection -->
+    <section class="quiz-selection" id="quiz-selection">
+        <div class="container">
+            <h2>Available Assessments</h2>
+            <div class="quiz-grid" id="quiz-list">
+                <!-- Quiz list will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Container -->
+    <section class="quiz-container" id="quiz-container" style="display: none;">
+        <div class="container">
+            <!-- Patient Information Form -->
+            <div class="patient-form" id="patient-form">
+                <h2>Before We Begin</h2>
+                <p>Please provide your information to receive personalized results:</p>
+                <form id="patient-info-form">
+                    <div class="form-group">
+                        <label for="patient-name">Full Name *</label>
+                        <input type="text" id="patient-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-email">Email Address *</label>
+                        <input type="email" id="patient-email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Start Quiz</button>
+                    <button type="button" class="btn btn-outline" onclick="goBackToQuizList()">Back to Quiz List</button>
+                </form>
+            </div>
+
+            <!-- Quiz Interface -->
+            <div class="quiz-interface" id="quiz-interface" style="display: none;">
+                <div class="quiz-header">
+                    <h2 id="quiz-title">Quiz Title</h2>
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <span class="progress-text" id="progress-text">Question 1 of 10</span>
+                    </div>
+                </div>
+
+                <div class="question-container" id="question-container">
+                    <!-- Questions will be loaded here -->
+                </div>
+
+                <div class="quiz-navigation">
+                    <button id="prev-btn" class="btn btn-outline" onclick="previousQuestion()" disabled>Previous</button>
+                    <button id="next-btn" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+                    <button id="submit-btn" class="btn btn-success" onclick="submitQuiz()" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+
+            <!-- Quiz Results -->
+            <div class="quiz-results" id="quiz-results" style="display: none;">
+                <div class="results-header">
+                    <h2>Your Assessment Results</h2>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="score-percentage">0%</span>
+                        </div>
+                        <p>You scored <span id="score-text">0 out of 0</span></p>
+                    </div>
+                </div>
+
+                <div class="results-details" id="results-details">
+                    <!-- Detailed results will be shown here -->
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn btn-primary" onclick="location.reload()">Take Another Quiz</button>
+                    <a href="/blog" class="btn btn-outline">Read Our Articles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hope Rehabilitation Center</h3>
+                    <p>Dedicated to providing compassionate, professional rehabilitation services to help you achieve lasting recovery and wellness.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Mental Health</a></li>
+                        <li><a href="#">Physical Therapy</a></li>
+                        <li><a href="#">Addiction Recovery</a></li>
+                        <li><a href="#">Wellness Programs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/quiz">Assessment Quiz</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📞 (555) 123-4567</p>
+                    <p>📧 info@hoperehab.com</p>
+                    <p>📍 123 Recovery Street<br>Wellness City, WC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hope Rehabilitation Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/quiz.js"></script>
+</body>
+</html>

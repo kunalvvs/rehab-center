@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Hope Rehabilitation Center</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <!-- Login Form -->
+    <div class="login-container" id="login-container">
+        <div class="login-form">
+            <h2>Admin Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div class="login-help">
+                <p>Need to create an admin account? <a href="#" onclick="showRegisterForm()">Register here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Form -->
+    <div class="login-container" id="register-container" style="display: none;">
+        <div class="login-form">
+            <h2>Admin Registration</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="button" class="btn btn-outline" onclick="showLoginForm()">Back to Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="admin-dashboard" style="display: none;">
+        <div class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <div class="admin-user">
+                <span id="admin-username">Welcome, Admin</span>
+                <button class="btn btn-outline" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="admin-nav">
+            <button class="nav-btn active" onclick="showSection('overview')">Overview</button>
+            <button class="nav-btn" onclick="showSection('blogs')">Manage Blogs</button>
+            <button class="nav-btn" onclick="showSection('quizzes')">Manage Quizzes</button>
+            <button class="nav-btn" onclick="showSection('attempts')">Quiz Attempts</button>
+        </div>
+
+        <!-- Overview Section -->
+        <div class="admin-section" id="overview-section">
+            <h2>Dashboard Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="total-blogs">0</h3>
+                    <p>Total Blog Posts</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="total-quizzes">0</h3>
+                    <p>Total Quizzes</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="total-attempts">0</h3>
+                    <p>Quiz Attempts</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="avg-score">0%</h3>
+                    <p>Average Score</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Management Section -->
+        <div class="admin-section" id="blogs-section" style="display: none;">
+            <div class="section-header">
+                <h2>Manage Blog Posts</h2>
+                <button class="btn btn-primary" onclick="showAddBlogForm()">Add New Blog</button>
+            </div>
+
+            <!-- Add/Edit Blog Form -->
+            <div class="form-container" id="blog-form-container" style="display: none;">
+                <h3 id="blog-form-title">Add New Blog Post</h3>
+                <form id="blog-form">
+                    <input type="hidden" id="blog-id">
+                    <div class="form-group">
+                        <label for="blog-title">Title *</label>
+                        <input type="text" id="blog-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-category">Category *</label>
+                        <select id="blog-category" required>
+                            <option value="">Select Category</option>
+                            <option value="Mental Health">Mental Health</option>
+                            <option value="Physical Therapy">Physical Therapy</option>
+                            <option value="Addiction Recovery">Addiction Recovery</option>
+                            <option value="Wellness">Wellness</option>
+                            <option value="General">General</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-image">Image URL *</label>
+                        <input type="url" id="blog-image" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-excerpt">Excerpt *</label>
+                        <textarea id="blog-excerpt" rows="3" maxlength="200" required></textarea>
+                        <small>Brief description (max 200 characters)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-content">Content *</label>
+                        <textarea id="blog-content" rows="10" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-tags">Tags (comma separated)</label>
+                        <input type="text" id="blog-tags" placeholder="healing, recovery, wellness">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Blog Post</button>
+                        <button type="button" class="btn btn-outline" onclick="hideBlogForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Blog List -->
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Created</th>
+                            <th>Published</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="blogs-table">
+                        <!-- Blog posts will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Quiz Management Section -->
+        <div class="admin-section" id="quizzes-section" style="display: none;">
+            <div class="section-header">
+                <h2>Manage Quizzes</h2>
+                <button class="btn btn-primary" onclick="showAddQuizForm()">Add New Quiz</button>
+            </div>
+
+            <!-- Add/Edit Quiz Form -->
+            <div class="form-container" id="quiz-form-container" style="display: none;">
+                <h3 id="quiz-form-title">Add New Quiz</h3>
+                <form id="quiz-form">
+                    <input type="hidden" id="quiz-id">
+                    <div class="form-group">
+                        <label for="quiz-title">Quiz Title *</label>
+                        <input type="text" id="quiz-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quiz-description">Description *</label>
+                        <textarea id="quiz-description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="quiz-category">Category *</label>
+                        <select id="quiz-category" required>
+                            <option value="">Select Category</option>
+                            <option value="Mental Health">Mental Health</option>
+                            <option value="Physical Therapy">Physical Therapy</option>
+                            <option value="Addiction Recovery">Addiction Recovery</option>
+                            <option value="General Knowledge">General Knowledge</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quiz-difficulty">Difficulty *</label>
+                        <select id="quiz-difficulty" required>
+                            <option value="">Select Difficulty</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+
+                    <!-- Questions Section -->
+                    <div class="questions-section">
+                        <h4>Questions</h4>
+                        <div id="questions-container">
+                            <!-- Questions will be added here -->
+                        </div>
+                        <button type="button" class="btn btn-outline" onclick="addQuestion()">Add Question</button>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Quiz</button>
+                        <button type="button" class="btn btn-outline" onclick="hideQuizForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Quiz List -->
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Questions</th>
+                            <th>Difficulty</th>
+                            <th>Active</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="quizzes-table">
+                        <!-- Quizzes will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Quiz Attempts Section -->
+        <div class="admin-section" id="attempts-section" style="display: none;">
+            <h2>Quiz Attempts</h2>
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Email</th>
+                            <th>Quiz</th>
+                            <th>Score</th>
+                            <th>Percentage</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attempts-table">
+                        <!-- Quiz attempts will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/admin.js"></script>
+</body>
+</html>
