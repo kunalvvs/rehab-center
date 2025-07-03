@@ -225,6 +225,9 @@ p {
     flex-direction: column;
     cursor: pointer;
     gap: 4px;
+    padding: 8px;
+    background: none;
+    border: none;
 }
 
 .hamburger span {
@@ -232,6 +235,19 @@ p {
     height: 3px;
     background-color: var(--gray-600);
     transition: 0.3s;
+    transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* Hero Section */
@@ -878,6 +894,7 @@ p {
 /* Utility Classes */
 .text-center {
     text-align: center;
+   margin: 20px;
 }
 
 .loading {
@@ -969,7 +986,25 @@ p {
 
 @media (max-width: 768px) {
     .nav-menu {
-        display: none;
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: var(--space-4) 0;
+        z-index: 99;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: var(--space-2) 0;
     }
     
     .hamburger {

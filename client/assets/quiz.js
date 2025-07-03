@@ -42,13 +42,24 @@ function displayQuizzes(quizzes) {
             <p>${quiz.description}</p>
             <div class="quiz-meta">
                 <span class="blog-category">${quiz.category}</span>
-                <span>${quiz.questions ? quiz.questions.length : 0} Questions</span>
+                <span>${getQuestionCount(quiz)} Questions</span>
             </div>
             <div class="text-center mt-4">
                 <button class="btn btn-primary">Start Assessment</button>
             </div>
         </div>
     `).join('');
+}
+
+function getQuestionCount(quiz) {
+    // Handle both cases: when questions array is populated and when it's just a count
+    if (quiz.questions && Array.isArray(quiz.questions)) {
+        return quiz.questions.length;
+    } else if (quiz.questionCount) {
+        return quiz.questionCount;
+    } else {
+        return 0;
+    }
 }
 
 async function selectQuiz(quizId) {

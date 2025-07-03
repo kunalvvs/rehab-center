@@ -5,6 +5,16 @@ import slugify from 'slugify';
 
 const router = express.Router();
 
+// Check if admin exists
+router.get('/check-admin', async (req, res) => {
+  try {
+    const adminCount = await User.countDocuments({ role: 'admin' });
+    res.json({ hasAdmin: adminCount > 0 });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // Login
 router.post('/login', async (req, res) => {
   try {
@@ -43,9 +53,17 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Register (for initial admin setup)
+// Register (only if no admin exists)
 router.post('/register', async (req, res) => {
   try {
+    // Check if any admin already exists
+    const adminCount = await User.countDocuments({ role: 'admin' });
+    if (adminCount > 0) {
+      return res.status(403).json({ 
+        message: 'Admin registration is disabled. An admin account already exists.' 
+      });
+    }
+
     const { username, email, password } = req.body;
 
     // Check if user already exists
